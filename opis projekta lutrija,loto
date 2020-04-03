@@ -1,0 +1,5 @@
+Program će služiti za zabavu i razbribrigu te neće postojati opasnost od stvaranja ovisnosti. Program će biti u boji sa dodatnim efektima i uvodnom animacijom
+uvodnom animacijom. Korsnik će na početku programa trebati unesti 7 brojeva od jedan do sto te će program rendom generatorm "izvući" 
+7 brojeva od jedan do sto te ih usporediti s Korisnikovim unesenim brojevima te mu izreći kolika je njgova sreća. "sreća" će biti generirana
+u obliku koliko je igrač pogodio istih brojeva.
+Trenutačno radim na razradi programa i uvodne animacije..
