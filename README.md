@@ -1,2 +1,2 @@
 # vitotoki
-Lutrija/loto
+Kod se sastoji od uvodnog dijela i igre. U uvodnom dijelu igrač bira želi li doista pristupiti igri( na sreću) ili izaći iz programa. Nakon što igrać pristupi igri zadatak mu je odabrati 3 broja od 1-11, te program putem slučajnog odabira također izabere 3 broja od 1-11 te provjeri poklapanje sa igračevim brojevima. Ukoliko se poklapaju igrač je pobjedio te za nagaradu dobiva pohvalnu poruku, tj. ako je izgubio program mu to kaže. Program nije namjenjen za ovisnost već za zabavnu igru. Također u program će uskoro biti dodane zanimljive animacije. Nema opasnosti od stvaranja ovisnosti.
