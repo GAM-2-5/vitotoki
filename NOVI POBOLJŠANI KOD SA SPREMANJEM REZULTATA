@@ -1,0 +1,97 @@
+import random
+
+NUMBER_OF_PICKS = 3
+MIN_PICK = 1
+MAX_PICK = 11
+WINNINGS = 100
+OFFSETT = 4
+
+
+# 'checker', uspoređuje userNums i winNums da vidi jesu li pobijedili ili izgubili
+def checker(userNums, winningNums):
+    if userNums == winningNums:
+        print ("\nCongratulations! You Win ${}!".format(WINNINGS),
+               "\nYour numbers: ", userNums,
+               "\nThe winning lottery numbers were: ", winningNums, "\n")
+    else:
+
+        print ("\nSorry, you lose...",
+               "\nYour numbers: ", userNums,
+               "\nThe winning lottery numbers were: ", winningNums, "\n")
+
+
+# 'get_user_nums', dobiva korisničke brojeve i stavlja ih u razvrstanu listu
+def get_user_nums():
+    userNums = []
+    while len(userNums) < NUMBER_OF_PICKS:
+        nums = input("Pick a number {} through {}: ".format(MIN_PICK, MAX_PICK))
+        try:
+            nums = int(nums)
+        except:
+            print("Sorry your input must be an integer!")
+            continue
+        if MIN_PICK <= nums <= MAX_PICK:
+            if nums not in userNums:
+                userNums.append(nums)
+            else:
+                print("Error! You have already picked this number")
+        else:
+            print("Error! Your number was not in range")
+
+    return sorted(userNums)
+
+
+# 'get_winning_nums', stvara sortirani popis sa slučajnim brojevima u rasponu od 0-9 s rasponom od 3 vrijednosti
+def get_winning_nums():
+    return sorted(random.sample(range(MIN_PICK, MAX_PICK), NUMBER_OF_PICKS)) 
+
+
+# 'menu', stvara glavni izbornik za odabir igre ili izlaznog programa
+def lottery_menu():
+    name = ' '*int(OFFSETT/2) + "LOTTERY MENU"
+    dotted = (OFFSETT+len(name))*'-'
+    options = ["[Play Pick {}]".format(NUMBER_OF_PICKS), 
+               "[Exit]"]
+    print('{} \n{} \n{}'.format(dotted, name, dotted))
+    for i, opt in enumerate(options):
+        print(i+1, opt)
+    print(dotted)
+
+def play_pick_n():
+    userNums = get_user_nums()
+    winningNums = get_winning_nums()
+    #spremam dobitke i korisnikove brojeve, sprema ih u datoteke winning_nums.txt i user_nums.txt
+    win = open("winning_nums.txt", "w")
+    win.write("Izabrani brojevi:\n")
+    for num in winningNums:
+        win.write(str(num) + ' ')
+    user = open("user_nums.txt", "w")
+    user.write("Korisnikovi brojevi:\n")
+    for num in userNums:
+        user.write(str(num) + ' ')
+    checker(userNums, winningNums)
+
+
+# 'main', poziva ostle funkcije
+def main():
+    lottery_menu()
+    while True:
+        choice = input("\nEnter your choice[1-2]: ")
+        if choice == '1':
+            string = "\n[Play Pick {}]".format(NUMBER_OF_PICKS) + "selected!"
+            dotted = '\n'+ len(string) * "-"
+
+            print(dotted,
+                  string,
+                  dotted)
+
+            play_pick_n()
+            break
+
+        elif choice == '2':
+            print ("Thanks for playing!\n")
+            break
+        
+        print("Error! Invalid input. Press any key to continue...\n")
+
+main()
